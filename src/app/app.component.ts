@@ -6,14 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { GoogleMapsKey } from './ApiKey';
-
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any = TabsPage;
-  apiUrl: string = GoogleMapsKey.apiUrl;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, menu: MenuController) {
     platform.ready().then(() => {

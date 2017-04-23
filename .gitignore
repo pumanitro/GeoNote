@@ -2,6 +2,7 @@
 # http://git-scm.com/docs/gitignore
 
 ApiKey.ts
+index.html
 
 *~
 *.sw[mnpcod]
