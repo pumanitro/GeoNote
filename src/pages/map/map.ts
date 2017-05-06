@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
-import { Materialize } from 'materialize-css';
+// import { Materialize } from 'materialize-css';
 
 declare let google;
 
@@ -37,7 +37,7 @@ export class Map {
 
       let mapOptions = {
         center: latLng,
-        zoom: 15,
+        zoom: 18,
         zoomControl: false,
         /*
         zoomControlOptions: {
@@ -48,6 +48,17 @@ export class Map {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+      //Adding a range circle to the center of our cords:
+      let cityCircle = new google.maps.Circle({
+        strokeColor: '#508fff',
+        strokeOpacity: 0.2,
+        strokeWeight: 2,
+        fillColor: '#508fff',
+        fillOpacity: 0.1,
+        map: this.map,
+        center: this.map.getCenter(),
+        radius: 100
+      });
 
       //Displaying marker in center of the map
       let marker = new google.maps.Marker({
