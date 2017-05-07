@@ -13,12 +13,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
+import { AddNote } from '../pages/map/add-note/add-note';
+
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
     Map,
+    AddNote,
     TabsPage
   ],
   imports: [
@@ -31,6 +34,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     AboutPage,
     ContactPage,
     Map,
+    AddNote,
     TabsPage
   ],
   providers: [
