@@ -28,11 +28,14 @@ export class MapManagerService {
       let mapOptions = {
         center: latLng,
         zoom: 18,
+        //turn off zoom buttons from the map
         zoomControl: false,
         /*
          zoomControlOptions: {
          position: google.maps.ControlPosition.RIGHT_TOP
          },*/
+        //Pegman off :
+        streetViewControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
