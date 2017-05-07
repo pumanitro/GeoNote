@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import { ViewController } from 'ionic-angular';
+
+import { MapManagerService } from '../map-manager.service';
+import { Note } from '../../../structures/Note';
 
 /**
  * Generated class for the AddNote component.
@@ -9,11 +12,15 @@ import { ViewController } from 'ionic-angular';
  */
 @Component({
   selector: 'add-note',
-  templateUrl: './add-note.html'
+  templateUrl: './add-note.html',
+  providers: [MapManagerService]
 })
 export class AddNote {
   //@ViewChild('someVar') el:ElementRef;
-  constructor(public viewCtrl: ViewController) {d
+  @ViewChild('noteTitle') noteTitle;
+  @ViewChild('noteContent') noteContent;
+
+  constructor(public viewCtrl: ViewController, public mapManagerService: MapManagerService) {
   }
 
   dismiss() {
@@ -21,8 +28,13 @@ export class AddNote {
     this.viewCtrl.dismiss(data);
   }
 
-  addNote(title:string,content:string){
+  addNewNote(){
+    let note = new Note();
 
+    note.title = this.noteTitle.value;
+    note.content = this.noteContent.value;
+
+    this.mapManagerService.addNewNote(note);
   }
 
 }

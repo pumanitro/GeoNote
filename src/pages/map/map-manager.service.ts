@@ -5,6 +5,7 @@
 import {Injectable} from "@angular/core";
 import { Geolocation } from '@ionic-native/geolocation';
 import { Note } from '../../structures/Note';
+//import LatLng = google.maps.LatLng;
 
 declare let google;
 
@@ -57,6 +58,7 @@ export class MapManagerService {
       });
 
       //Displaying marker in center of the map
+      /*
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
@@ -66,14 +68,14 @@ export class MapManagerService {
       let content = "<h4>Information!</h4>";
 
       this.addInfoWindow(marker, content);
-
+*/
     }, (err) => {
       console.log(err);
     });
 
   }
 
-  public generateNotes(){
+  /*public generateNotes(){
     this.geolocation.getCurrentPosition().then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -83,22 +85,7 @@ export class MapManagerService {
     }, (err) => {
       console.log(err);
     });
-  }
-
-  private addNote(position,content){
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: position
-    });
-
-    this.addInfoWindow(marker, content);
-  }
-
-  public addNewNote(note:Note){
-
-  }
+  }*/
 
   private addInfoWindow(marker, content){
 
@@ -111,5 +98,35 @@ export class MapManagerService {
     });
 
   }
+
+  private addNote(position ,note: Note){
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: position
+    });
+
+    const content = `<h3>${note.title}</h3><p>${note.content}</p>`;
+
+    this.addInfoWindow(marker, content);
+  }
+
+  public addNewNote(note:Note){
+    /*this.geolocation.getCurrentPosition().then((position) => {
+
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      this.addNote(latLng,note);
+
+    }, (err) => {
+      console.log(err);
+    });*/
+
+
+    //this.addNote(this.map.getCenter(),note);
+
+  }
+
 
 }

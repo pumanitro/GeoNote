@@ -26,7 +26,6 @@ export class Map {
   @ViewChild('map') mapElement: ElementRef;
 
   constructor(public navCtrl: NavController, public mapManagerService: MapManagerService, public modalCtrl: ModalController) {
-
   }
 
   ionViewDidLoad(){

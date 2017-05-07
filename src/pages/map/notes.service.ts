@@ -5,9 +5,9 @@
 import {Injectable} from "@angular/core";
 import { Note } from '../../structures/Note';
 
-import LatLng = google.maps.LatLng;
+//import LatLng = google.maps.LatLng;
 
-let Notes: { position: LatLng, note: Note}[] = [
+let Notes: { position, note: Note}[] = [
   //{lat: 0 , lng: 0}
 ];
 
@@ -18,7 +18,7 @@ export class NotesService {
   constructor() {
   }
 
-  addNote(position: LatLng, note: Note){
+  addNote(position, note: Note){
     Notes.push({position: position, note: note});
   }
 
