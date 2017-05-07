@@ -12,13 +12,17 @@ import { ViewController } from 'ionic-angular';
   templateUrl: './add-note.html'
 })
 export class AddNote {
-
-  constructor(public viewCtrl: ViewController) {
+  //@ViewChild('someVar') el:ElementRef;
+  constructor(public viewCtrl: ViewController) {d
   }
 
   dismiss() {
     let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss(data);
+  }
+
+  addNote(title:string,content:string){
+
   }
 
 }

@@ -11,12 +11,12 @@
 
   <ion-list padding>
     <ion-item>
-      <ion-label color="primary" stacked>Title</ion-label>
+      <ion-label #noteTitle color="primary" stacked>Title</ion-label>
       <ion-input></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="primary" stacked>Content</ion-label>
+      <ion-label #noteContent color="primary" stacked>Content</ion-label>
       <ion-textarea rows="3"></ion-textarea>
     </ion-item>
   </ion-list>
@@ -32,7 +32,7 @@
           Cancel
         </button>
 
-        <button ion-button icon-left padding (click)="dismiss()">
+        <button ion-button icon-left padding (click)="dismiss(); addNote(noteTitle,noteContent)">
           <ion-icon name="checkmark-circle"></ion-icon>
           Create
         </button>

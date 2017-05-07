@@ -4,6 +4,7 @@
 
 import {Injectable} from "@angular/core";
 import { Geolocation } from '@ionic-native/geolocation';
+import { Note } from '../../structures/Note';
 
 declare let google;
 
@@ -75,6 +76,8 @@ export class MapManagerService {
   public generateNotes(){
     this.geolocation.getCurrentPosition().then((position) => {
 
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
 
 
     }, (err) => {
@@ -82,7 +85,7 @@ export class MapManagerService {
     });
   }
 
-  public addNote(position,content){
+  private addNote(position,content){
 
     let marker = new google.maps.Marker({
       map: this.map,
@@ -91,6 +94,10 @@ export class MapManagerService {
     });
 
     this.addInfoWindow(marker, content);
+  }
+
+  public addNewNote(note:Note){
+
   }
 
   private addInfoWindow(marker, content){
