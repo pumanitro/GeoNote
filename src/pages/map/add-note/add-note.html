@@ -1,4 +1,39 @@
 <!-- Generated template for the AddNote component -->
-<div>
-  {{text}}
-</div>
+<ion-header>
+  <ion-navbar>
+    <h2 padding-left>
+      Add Note
+    </h2>
+
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label color="primary" stacked>Title</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Content</ion-label>
+      <ion-textarea rows="10"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+
+  <div class="buttonContainer" text-center>
+
+    <button ion-button icon-left padding (click)="dismiss()">
+      <ion-icon  name="close-circle"></ion-icon>
+      Cancel
+    </button>
+
+    <button ion-button icon-left padding (click)="dismiss()">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      Create
+    </button>
+
+  </div>
+
+</ion-content>

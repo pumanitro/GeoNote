@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the AddNote component.
@@ -12,11 +13,12 @@ import { Component } from '@angular/core';
 })
 export class AddNote {
 
-  text: string;
+  constructor(public viewCtrl: ViewController) {
+  }
 
-  constructor() {
-    console.log('Hello AddNote Component');
-    this.text = 'Hello World';
+  dismiss() {
+    let data = { 'foo': 'bar' };
+    this.viewCtrl.dismiss(data);
   }
 
 }

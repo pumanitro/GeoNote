@@ -1,7 +1,13 @@
 add-note {
 
-  background-color: white;
+  background-color: color($colors,light);
 
 }
 
+[icon-only]{
+  font-size: 0.7em;
+}
 
+.buttonContainer button{
+  width: 150px;
+}
