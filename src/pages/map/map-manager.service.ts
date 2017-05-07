@@ -27,7 +27,7 @@ export class MapManagerService {
 
       let mapOptions = {
         center: latLng,
-        zoom: 18,
+        zoom: 17,
         //turn off zoom buttons from the map
         zoomControl: false,
         /*
@@ -36,6 +36,8 @@ export class MapManagerService {
          },*/
         //Pegman off :
         streetViewControl: false,
+        //Fullscean button turn off:
+        fullscreenControl: false,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
 
@@ -68,6 +70,27 @@ export class MapManagerService {
       console.log(err);
     });
 
+  }
+
+  public generateNotes(){
+    this.geolocation.getCurrentPosition().then((position) => {
+
+
+
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  public addNote(position,content){
+
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: position
+    });
+
+    this.addInfoWindow(marker, content);
   }
 
   private addInfoWindow(marker, content){
