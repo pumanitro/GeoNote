@@ -15,7 +15,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import { AddNote } from '../pages/map/add-note/add-note';
 
-import {MapManagerService } from  '../pages/map/map-manager.service';
+import {MapManagerService } from '../pages/map/map-manager.service';
+
+import {NotesService} from '../pages/map/notes.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {MapManagerService } from  '../pages/map/map-manager.service';
     SplashScreen,
     Geolocation,
     MapManagerService,
+    NotesService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

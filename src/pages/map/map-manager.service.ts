@@ -7,6 +7,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Note } from '../../structures/Note';
 //import LatLng = google.maps.LatLng;
 
+import {NotesService} from './notes.service';
+
 declare let google;
 
 @Injectable()
@@ -14,7 +16,7 @@ export class MapManagerService {
   private map: any;
   private mapElement;
 
-  constructor( public geolocation: Geolocation){
+  constructor( public geolocation: Geolocation, private noteService: NotesService){
   }
 
   loadMap(mapElement){
@@ -79,17 +81,40 @@ export class MapManagerService {
 
   }
 
-  /*public generateNotes(){
+  private getPieceOfPosition():number{
+    let sign;
+
+    if(Math.random() >= 0.5)
+      sign = -1;
+    else
+      sign = 1;
+
+      //from +-0.00010 to +-0.00070
+    return Math.floor((Math.random() * 70) + 10)*0.00001*sign;
+  }
+
+  public generateNotes(noteNO){
     this.geolocation.getCurrentPosition().then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+      let note:Note = new Note();
+      note.title = "Generated";
+      note.content = "Lorem Ipsum";
 
+
+      for(let i=0;i<noteNO;i++)
+      {
+        const newLatLng = new google.maps.LatLng(latLng.lat()+this.getPieceOfPosition(), latLng.lng()+this.getPieceOfPosition());
+        this.addNote(newLatLng,note);
+        this.noteService.addNote(newLatLng,note);
+      }
 
     }, (err) => {
       console.log(err);
     });
-  }*/
+
+  }
 
   private addInfoWindow(marker, content){
 
