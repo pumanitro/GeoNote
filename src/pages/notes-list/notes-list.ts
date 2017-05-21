@@ -1,24 +1,18 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the NotesList page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+import { NotesService } from '../map/notes.service';
+
 @Component({
   selector: 'page-notes-list',
   templateUrl: 'notes-list.html',
 })
 export class NotesList {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public noteService: NotesService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NotesList');
   }
 
 }

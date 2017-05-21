@@ -3,9 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { Map } from '../pages/map/map';
+import { NotesList } from '../pages/notes-list/notes-list';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,8 +21,7 @@ import {NotesService} from '../pages/map/notes.service';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    NotesList,
     Map,
     AddNote,
     TabsPage
@@ -35,8 +33,7 @@ import {NotesService} from '../pages/map/notes.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    NotesList,
     Map,
     AddNote,
     TabsPage
