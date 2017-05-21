@@ -7,6 +7,9 @@ import { AddNote } from "./add-note/add-note";
 
 // import { Materialize } from 'materialize-css';
 
+import { Geolocation } from '@ionic-native/geolocation';
+//import LatLng = google.maps.LatLng;
+
 declare let google;
 
 /**
@@ -18,26 +21,23 @@ declare let google;
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html',
-  providers: [MapManagerService],
   entryComponents: [AddNote]
 })
 export class Map {
 
   @ViewChild('map') mapElement: ElementRef;
 
-  constructor(public navCtrl: NavController, public mapManagerService: MapManagerService, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public mapManagerService: MapManagerService, public modalCtrl: ModalController, public geolocation: Geolocation) {
   }
 
-  ionViewDidLoad(){
-    this.mapManagerService.mapInit(this.mapElement);
-    this.mapManagerService.loadMap();
+  ngOnInit(){
+    //console.error(this.mapElement);
+    this.mapManagerService.loadMap(this.mapElement);
   }
 
   presentAddNoteModal() {
     let addNoteModal = this.modalCtrl.create(AddNote, { userId: 8675309 });
     addNoteModal.present();
   }
-
-
 
 }

@@ -17,12 +17,9 @@ export class MapManagerService {
   constructor( public geolocation: Geolocation){
   }
 
-  mapInit(mapElement){
+  loadMap(mapElement){
+
     this.mapElement = mapElement;
-  }
-
-  loadMap(){
-
     this.geolocation.getCurrentPosition().then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -56,6 +53,13 @@ export class MapManagerService {
         center: this.map.getCenter(),
         radius: 100
       });
+
+      /*
+      let test = new Note;
+      test.title = 'tit';
+      test.content = 'test';
+      */
+      // this.addNewNote(test);
 
       //Displaying marker in center of the map
       /*
@@ -113,7 +117,7 @@ export class MapManagerService {
   }
 
   public addNewNote(note:Note){
-    /*this.geolocation.getCurrentPosition().then((position) => {
+    this.geolocation.getCurrentPosition().then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
@@ -121,8 +125,7 @@ export class MapManagerService {
 
     }, (err) => {
       console.log(err);
-    });*/
-
+    });
 
     //this.addNote(this.map.getCenter(),note);
 

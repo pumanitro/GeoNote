@@ -1,8 +1,9 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import { ViewController } from 'ionic-angular';
 
 import { MapManagerService } from '../map-manager.service';
 import { Note } from '../../../structures/Note';
+import { Map } from '../map';
 
 /**
  * Generated class for the AddNote component.
@@ -12,8 +13,7 @@ import { Note } from '../../../structures/Note';
  */
 @Component({
   selector: 'add-note',
-  templateUrl: './add-note.html',
-  providers: [MapManagerService]
+  templateUrl: './add-note.html'
 })
 export class AddNote {
   //@ViewChild('someVar') el:ElementRef;
