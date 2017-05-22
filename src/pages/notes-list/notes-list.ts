@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {ModalController, NavController, NavParams} from 'ionic-angular';
 
 import { NotesService } from '../map/notes.service';
+import {Note} from "../../structures/Note";
+
+import {NoteView} from './note-view/note-view';
 
 @Component({
   selector: 'page-notes-list',
@@ -9,10 +12,18 @@ import { NotesService } from '../map/notes.service';
 })
 export class NotesList {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public noteService: NotesService) {
+  public notes: { position, note: Note }[] = this.noteService.getNotes();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public noteService: NotesService, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
+  }
+
+  gotoNoteView(note) {
+    //this.navCtrl.push(NoteView, { note: note });
+    let addNoteModal = this.modalCtrl.create(NoteView, { note: note });
+    addNoteModal.present();
   }
 
 }

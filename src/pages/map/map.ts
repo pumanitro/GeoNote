@@ -33,7 +33,6 @@ export class Map {
   ngOnInit(){
     //console.error(this.mapElement);
     this.mapManagerService.loadMap(this.mapElement);
-    this.mapManagerService.generateNotes(20);
   }
 
   presentAddNoteModal() {

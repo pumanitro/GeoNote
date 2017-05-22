@@ -18,12 +18,15 @@ import {MapManagerService } from '../pages/map/map-manager.service';
 
 import {NotesService} from '../pages/map/notes.service';
 
+import {NoteView} from '../pages/notes-list/note-view/note-view';
+
 @NgModule({
   declarations: [
     MyApp,
     NotesList,
     Map,
     AddNote,
+    NoteView,
     TabsPage
   ],
   imports: [
@@ -36,6 +39,7 @@ import {NotesService} from '../pages/map/notes.service';
     NotesList,
     Map,
     AddNote,
+    NoteView,
     TabsPage
   ],
   providers: [

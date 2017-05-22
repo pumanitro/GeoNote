@@ -11,7 +11,7 @@ import { Note } from '../../structures/Note';
 @Injectable()
 export class NotesService {
 
-  public  Notes: { position, note: Note}[] = [
+  private  Notes: { position, note: Note}[] = [
   //{lat: 0 , lng: 0}
   ];
 
@@ -20,6 +20,10 @@ export class NotesService {
 
   addNote(position, note: Note){
     this.Notes.push({position: position, note: note});
+  }
+
+  getNotes(): { position, note: Note}[]{
+    return this.Notes;
   }
 
 }

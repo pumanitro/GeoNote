@@ -16,6 +16,8 @@ export class MapManagerService {
   private map: any;
   private mapElement;
 
+  public actualPos;
+
   constructor( public geolocation: Geolocation, private noteService: NotesService){
   }
 
@@ -25,6 +27,8 @@ export class MapManagerService {
     this.geolocation.getCurrentPosition().then((position) => {
 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+      this.actualPos = latLng;
 
       let mapOptions = {
         center: latLng,
@@ -75,6 +79,9 @@ export class MapManagerService {
 
       this.addInfoWindow(marker, content);
 */
+
+      this.generateNotes(20);
+
     }, (err) => {
       console.log(err);
     });
@@ -94,25 +101,20 @@ export class MapManagerService {
   }
 
   public generateNotes(noteNO){
-    this.geolocation.getCurrentPosition().then((position) => {
 
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    let latLng = this.actualPos;
 
-      let note:Note = new Note();
-      note.title = "Generated";
-      note.content = "Lorem Ipsum";
+    let note:Note = new Note();
+    note.title = "Generated";
+    note.content = "Lorem Ipsum";
 
 
-      for(let i=0;i<noteNO;i++)
-      {
-        const newLatLng = new google.maps.LatLng(latLng.lat()+this.getPieceOfPosition(), latLng.lng()+this.getPieceOfPosition());
-        this.addNote(newLatLng,note);
-        this.noteService.addNote(newLatLng,note);
-      }
-
-    }, (err) => {
-      console.log(err);
-    });
+    for(let i=0;i<noteNO;i++)
+    {
+      const newLatLng = new google.maps.LatLng(latLng.lat()+this.getPieceOfPosition(), latLng.lng()+this.getPieceOfPosition());
+      this.addNote(newLatLng,note);
+      this.noteService.addNote(newLatLng,note);
+    }
 
   }
 

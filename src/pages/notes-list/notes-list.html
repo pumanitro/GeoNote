@@ -1,20 +1,23 @@
-<!--
-  Generated template for the NotesList page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>notes-list</ion-title>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    Page text
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
-
-
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let el of notes">
+      <ion-thumbnail item-left>
+        <img src="assets/notes.png">
+      </ion-thumbnail>
+      <h2>{{el.note.title}}</h2>
+      <p>{{el.note.content}}</p>
+      <button ion-button clear item-right (click)="gotoNoteView(el.note)">View</button>
+    </ion-item>
+  </ion-list>
 </ion-content>
+
