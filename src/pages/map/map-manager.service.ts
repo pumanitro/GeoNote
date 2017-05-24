@@ -68,17 +68,11 @@ export class MapManagerService {
       // this.addNewNote(test);
 
       //Displaying marker in center of the map
-      /*
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: this.map.getCenter()
       });
-
-      let content = "<h4>Information!</h4>";
-
-      this.addInfoWindow(marker, content);
-*/
 
       this.generateNotes(20);
 
@@ -118,29 +112,25 @@ export class MapManagerService {
 
   }
 
-  private addInfoWindow(marker, content){
+  private addNote(position ,note: Note){
+
+    // let marker = new google.maps.Marker({
+    /*let infoWindow = new google.maps.InfoWindow({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: position
+    });*/
+
+    const content = `<h3>${note.title}</h3><p>${note.content}</p>`;
 
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });
 
-    google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.open(this.map, marker);
-    });
+    infoWindow.setPosition(position);
+    infoWindow.open(this.map);
 
-  }
-
-  private addNote(position ,note: Note){
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: position
-    });
-
-    const content = `<h3>${note.title}</h3><p>${note.content}</p>`;
-
-    this.addInfoWindow(marker, content);
+    //this.addInfoWindow(infoWindow, content);
   }
 
   public addNewNote(note:Note){

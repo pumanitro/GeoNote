@@ -19,6 +19,7 @@ export class NotesService {
   }
 
   addNote(position, note: Note){
+
     this.Notes.push({position: position, note: note});
   }
 
