@@ -74,7 +74,7 @@ export class MapManagerService {
         position: this.map.getCenter()
       });
 
-      this.generateNotes(20);
+      this.generateNotes(5);
 
     }, (err) => {
       console.log(err);

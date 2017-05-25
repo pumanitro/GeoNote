@@ -30,7 +30,7 @@ export class Map {
   constructor(public navCtrl: NavController, public mapManagerService: MapManagerService, public modalCtrl: ModalController, public geolocation: Geolocation) {
   }
 
-  ngOnInit(){
+  ionViewDidLoad(){
     //console.error(this.mapElement);
     this.mapManagerService.loadMap(this.mapElement);
   }

@@ -12,12 +12,13 @@ import {NoteView} from './note-view/note-view';
 })
 export class NotesList {
 
-  public notes: { position, note: Note }[] = this.noteService.getNotes();
+  public notes: { position, note: Note }[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public noteService: NotesService, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
+    this.notes = this.noteService.getNotes();
   }
 
   gotoNoteView(note) {

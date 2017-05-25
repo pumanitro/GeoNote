@@ -4,6 +4,7 @@ import { ViewController } from 'ionic-angular';
 import { MapManagerService } from '../map-manager.service';
 import { Note } from '../../../structures/Note';
 import { Map } from '../map';
+import {NotesService} from "../notes.service";
 
 /**
  * Generated class for the AddNote component.
@@ -20,7 +21,7 @@ export class AddNote {
   @ViewChild('noteTitle') noteTitle;
   @ViewChild('noteContent') noteContent;
 
-  constructor(public viewCtrl: ViewController, public mapManagerService: MapManagerService) {
+  constructor(public viewCtrl: ViewController, public mapManagerService: MapManagerService, public notesService : NotesService) {
   }
 
   dismiss() {
@@ -35,6 +36,7 @@ export class AddNote {
     note.content = this.noteContent.value;
 
     this.mapManagerService.addNewNote(note);
+    this.notesService.addNote(this.mapManagerService.actualPos,note);
   }
 
 }

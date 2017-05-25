@@ -1,14 +1,14 @@
 <!-- Generated template for the AddNote component -->
 <ion-header>
   <ion-navbar>
-    <button ion-button clear (click)="dismiss()">
-      <ion-icon name="arrow-dropleft"></ion-icon>
-    </button>
-
-    <h2 padding-left>
-      Note view
-    </h2>
-
+      <h2 padding-left style="display:flex; align-items: center">
+        <button ion-button clear (click)="dismiss()">
+          <ion-icon name="arrow-dropleft"></ion-icon>
+        </button>
+        <span>
+          Note view
+        </span>
+      </h2>
   </ion-navbar>
 </ion-header>
 <ion-content>
@@ -16,13 +16,16 @@
   <ion-list padding>
     <ion-item>
       <ion-label color="primary" stacked>Title</ion-label>
-      <ion-input #noteTitle [(ngModel)]="note.title"></ion-input>
+      <ion-input #noteTitle [(ngModel)]="note.title" readonly></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label color="primary" stacked>Content</ion-label>
-      <ion-textarea #noteContent rows="3"[(ngModel)]="note.content"></ion-textarea>
+      <ion-input #noteContent [(ngModel)]="note.content" readonly></ion-input>
     </ion-item>
+
+    <!--For hidding last item css-->
+    <ion-input [hidden]="true" ></ion-input>
   </ion-list>
 
 </ion-content>
